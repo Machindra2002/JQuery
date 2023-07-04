@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="../Bootstrap Files/js/jquery.min.js"></script>
+    <title>11/11/2022</title>
+    <script>
+        // program-1
+        /*
+                var arr = [];
+                $(document).ready(function () {
+                    $("#btn").click(function () {
+                        var r_no = $("#roll").val();
+                        var name = $("#name").val();
+                        var c = $("#chem").val();
+                        var p = $("#phy").val();
+                        var m = $("#math").val();
+                        var total = Number(c) + Number(p) + Number(m);
+                        var per = total / 3;
+                        var grade = ""
+        
+                        if (per <= 35) {
+                            grade = "D"
+                        }
+                        else if (per >= 36 && per <= 50) {
+                            grade = "C";
+                        }
+                        else if (per >= 51 && per <= 75) {
+                            grade = "B";
+                        }
+                        else if (per >= 76 && per <= 100) {
+                            grade = "A";
+                        }
+                        else {
+                            grade = "invalid input"
+                        }
+        
+                        var obj = {
+                            "r_no": r_no,
+                            "name": name,
+                            "c": c,
+                            "p": p,
+                            "m": m,
+                            "total": total,
+                            "per": per,
+                            "grade": grade
+                        }
+        
+                        arr.push(obj);
+                        Display();
+                    })
+                })
+        
+        
+                function Display() {
+                    $("#mydata").empty();
+                    $.each(arr, function (i, d) {
+                        $("#mydata").append(
+                            "<tr><td>" + arr[i].r_no + "</td>" +
+                            "<td>" + arr[i].name + "</td>" +
+                            "<td>" + arr[i].c + "</td>" +
+                            "<td>" + arr[i].p + "</td>" +
+                            "<td>" + arr[i].m + "</td>" +
+                            "<td>" + arr[i].total + "</td>" +
+                            "<td>" + arr[i].per + "</td>" +
+                            "<td>" + arr[i].grade + "</td></tr>"
+                        )
+                    })
+                }
+        */
+
+
+        // program-2(using change funciton)
+        var arr = [];
+        $(document).ready(function () {
+            $("#chem,#phy,#math").change(function () {
+                var c = $("#chem").val();
+                var p = $("#phy").val();
+                var m = $("#math").val();
+                var total = Number(c) + Number(p) + Number(m);
+                $("#tot").val(total);
+                var per = total / 3;
+                $("#per").val(per);
+                var grade = ""
+
+                if (per <= 35) {
+                    grade = "D"
+                }
+                else if (per >= 36 && per <= 50) {
+                    grade = "C";
+                }
+                else if (per >= 51 && per <= 75) {
+                    grade = "B";
+                }
+                else if (per >= 76 && per <= 100) {
+                    grade = "A";
+                }
+                else {
+                    grade = "invalid input"
+                }
+
+                $("#grd").val(grade);
+            })
+
+            $("#btn").click(function () {
+                var r_no = $("#roll").val();
+                var name = $("#name").val();
+                var c = $("#chem").val();
+                var p = $("#phy").val();
+                var m = $("#math").val();
+                var total = $("#tot").val();
+                var per = $("#per").val();
+                var grade = $("#grd").val();;
+
+                var obj = {
+                    "r_no": r_no,
+                    "name": name,
+                    "c": c,
+                    "p": p,
+                    "m": m,
+                    "total": total,
+                    "per": per,
+                    "grade": grade
+                };
+
+                arr.push(obj);
+                Display();
+            })
+        })
+
+
+
+
+
+        function Display() {
+            $("#mydata").empty();
+            $.each(arr, function (i, d) {
+                $("#mydata").append(
+                    "<tr><td>" + arr[i].r_no + "</td>" +
+                    "<td>" + arr[i].name + "</td>" +
+                    "<td>" + arr[i].c + "</td>" +
+                    "<td>" + arr[i].p + "</td>" +
+                    "<td>" + arr[i].m + "</td>" +
+                    "<td>" + arr[i].total + "</td>" +
+                    "<td>" + arr[i].per + "</td>" +
+                    "<td>" + arr[i].grade + "</td>" +
+                    "<td>" + "<input type='button' value='delete' onclick='remove(" + i + ")'/>" + "</td></tr>"
+                )
+            })
+        }
+
+        function remove(r) {
+            arr.splice(r, 1);
+            alert("student remove successfully");
+            Display();
+        }
+
+    </script>
+</head>
+
+<body>
+    <div>
+        <label>Roll No:</label>
+        <input type="text" id="roll" />
+    </div><br>
+    <div>
+        <label>Name:</label>
+        <input type="text" id="name" />
+    </div><br>
+    <div>
+        <label>chemistry</label>
+        <input type="text" id="chem" />
+    </div><br>
+    <div>
+        <label>physics</label>
+        <input type="text" id="phy" />
+    </div><br>
+    <div>
+        <label>Maths</label>
+        <input type="text" id="math" />
+    </div><br>
+    <div>
+        <label>Total:</label>
+        <input type="text" id="tot" />
+    </div><br>
+    <div>
+        <label>percentage:</label>
+        <input type="text" id="per" />
+    </div><br>
+    <div>
+        <label>Grade:</label>
+        <input type="text" id="grd" />
+    </div>
+    <div>
+        <input type="button" value="submit" id="btn">
+    </div>
+
+    <hr>
+
+
+    <table border="2">
+        <thead>
+            <tr>
+                <th>Roll_No</th>
+                <th>Name</th>
+                <th>chemistry</th>
+                <th>physics</th>
+                <th>Maths</th>
+                <th>Total</oth>
+                <th>percentage</th>
+                <th>Grade</th>
+                <th>remove</th>
+            </tr>
+        </thead>
+        <tbody id="mydata"></tbody>
+    </table>
+
+
+
+
+
+</body>
+
+</html>

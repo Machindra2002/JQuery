@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../Bootstrap Files/js/jquery.min.js"></script>
+    <title>11/10/2022</title>
+    <script>
+        // program--1
+    
+        // $(document).ready(function () {
+        //     $("#btn").click(function () {
+
+        //         var arr = [10, 20, 40, 30, 60];
+        //         $.each(arr, function (i, d) {               //i--> index & d-->value
+        //             $("#mydata").append("<li>" + d + "</li>");
+        //         })
+
+        //     })
+        // })
+
+        
+
+        var cities = [];
+        $(document).ready(function(){
+            $("#btn").click(function(){
+                var c = $("#txt").val();
+                cities.push(c);
+                Display();
+            })
+        })
+
+        function Display(){
+            $("#mydata").empty();
+            $.each(cities,function(i,d){
+                $("#mydata").append("<li>" + d +"<input type='button' value='x' onclick='remove("+ i +")'/>" + "</li>");
+            })
+        }
+
+        function remove(r){
+            cities.splice(r,1);
+            alert("value successfully remove");
+            Display();
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <!-- <input type="button" value="display" id="btn" />
+    <ul id="mydata"></ul> -->
+
+        <input type="text" id="txt">
+        <input type="button" value="submit" id="btn"/>
+        <ul id="mydata"> </ul>
+
+
+
+
+
+
+</body>
+
+</html>

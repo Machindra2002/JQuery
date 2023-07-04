@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>19/10/2022</title>
+    <script>
+        function login(){
+
+            var username= document.getElementById("txt1").value;
+            var password = document.getElementById("txt2").value;
+            
+            if(username == "abc" && password == "1234"){
+                localStorage.setItem("username", username);
+                localStorage.setItem("password", password);
+                window.location.href = "Dashboard.html";
+            }
+            else{
+                document.getElementById("spn").innerHTML = "invalid login id & password";
+            }
+        }
+
+        
+    </script>
+</head>
+<body>
+
+    Id : <input type="text" id="txt1"/><br>
+    password : <input type="text" id="txt2"/><br>
+    <span id="spn" style="color: red;"></span>
+    <h2 id="msg"></h2>
+
+    <input type="button" value="login" onclick="login()" >
+
+    
+</body>
+</html>

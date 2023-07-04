@@ -1,0 +1,4 @@
+[{"rno":1, "name":"Machindra"},
+    {"rno":2, "name":"Mayur"},
+    {"rno":3, "name":"Suraj"},
+    {"rno":4, "name":"Tejas"}]

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14/10/2022</title>
+    <script>
+        //program--1
+        /*
+        function Display(){
+            setTimeout(function(){
+                document.getElementById("msg").innerHTML="Welcome"
+            },3000)
+        }
+        */
+
+
+        //program--2
+        /*
+        function Display(){
+            setTimeout(function(){
+                window.location.href="Dashboard.html"
+            },5000)
+        }
+        */
+
+        //program--3
+        /*
+        function Display(){
+        var cnt = 0;
+        document.getElementById("msg").innerHTML= cnt;
+        setInterval(function(){
+            cnt++;
+            document.getElementById("msg").innerHTML  = cnt;
+        },1000)
+
+    }
+    */
+
+    function Display(){
+        var cnt = 0;
+        document.getElementById("msg").innerHTML = cnt;
+        setInterval(function(){
+            cnt++;
+            if(cnt <= 10){
+                document.getElementById("msg").innerHTML= cnt;
+            }
+            else{
+                window.location.href = "Dashboard.html"
+            }
+        },1000)
+    }
+
+
+
+    </script>
+</head>
+<body onload="Display()">
+    
+    <h3 id="msg"></h3>
+
+</body>
+</html>

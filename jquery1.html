@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>jquary lecture1(10/10/22)</title>
+    <script src="../Bootstrap Files/js/jquery.min.js"></script>
+
+    <script>
+        //1st program
+        /*
+        $(document).ready(function(){
+            $("#btn").click(function(){
+                $("#msg").html("Welcome to jquery")
+
+            })
+        })
+        */
+
+        // 2nd program
+        $(document).ready(function(){
+            $("#btn1").click(function(){
+                $("#dv").hide();
+            })
+
+            $("#btn2").click(function(){
+                $("#dv").show();
+            })
+
+            $("#btn3").click(function(){
+                $("#dv").toggle();
+            })
+
+            $("#btn4").click(function(){
+                $("#dv").fadeOut();
+            })
+
+            $("#btn5").click(function(){
+                $("#dv").fadeIn();
+            })
+            $("#btn6").click(function(){
+                $("#dv").slideUp();
+            })
+            $("#btn7").click(function(){
+                $("#dv").slideDown();
+            })
+            $("#btn8").click(function(){
+                $("#dv").slideToggle();
+            })
+           
+        })
+
+    
+    </script>
+</head>
+<body>
+     
+    <!-- <input type="button" value="submit" id="btn">
+    <h1 id="msg"></h1> -->
+
+    <input type="button" value="hide" id="btn1">
+    <input type="button" value="show" id="btn2">
+    <input type="button" value="hide-show" id="btn3">
+    <input type="button" value="fadeout" id="btn4">
+    <input type="button" value="fadeIn" id="btn5">
+    <input type="button" value="slideUp" id="btn6">
+    <input type="button" value="slideDown" id="btn7">
+    <input type="button" value="slideToggle" id="btn8">
+    <div id="dv" style="height: 100px; width: 100px; background-color: red;"></div>
+
+</body>
+</html>

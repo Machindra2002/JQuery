@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>19/10/2022</title>
+    <script>
+        function setData(){
+            localStorage.setItem("username", "Machindra");
+            localStorage.setItem("password", "12345678");
+            alert("data saved");
+        }
+
+        function getData(){
+            var uname = localStorage.getItem("username");
+            document.getElementById("msg").innerHTML = "Welcome " +uname;
+        }
+
+        function Remove(){
+            localStorage.removeItem("password");
+            alert("remove data");
+        }
+
+
+    </script>
+</head>
+<body>
+    
+    <input type="button" value="data storage" onclick="setData()"/>
+
+
+    <input type="button" value="get data" onclick="getData()">
+    <h2 id="msg"></h2>
+
+    <input type="button" value="remove data" onclick="Remove()">
+
+
+</body>
+</html>

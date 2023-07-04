@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../Bootstrap Files/js/jquery.min.js"></script>
+    <title>10/10/2022</title>
+    <script>
+        /*
+        $(document).ready(function () {
+            $("#btn").click(function () {
+                var m = $("#txt").val();
+                var e = $("#txt1").val();
+                var s = $("#txt2").val();
+                var total = Number(m) + Number(e) + Number(s);
+                var per = total / 3;
+                var grade = "";
+
+                if (per <= 35) {
+                    grade = "D"
+                }
+                else if (per >= 36 && per <= 50) {
+                    grade = "C";
+                }
+                else if (per >= 51 && per <= 75) {
+                    grade = "B";
+                }
+                else if (per >= 76 && per <= 100) {
+                    grade = "A";
+                }
+                else {
+                    grade = "invalid input"
+                }
+
+                $("#mydata").html(
+                    "total =" + total +
+                    "<br> per = " + per +
+                    " <br> grade = " + grade
+
+                )
+                // $("#tot").html("total =" +total);
+                // $("#per").html("per =" +per);
+                // $("#grd").html("Grade =" +grade);
+
+            })
+        })
+        */
+
+
+
+        //task--2
+        var arr = [];
+        $(document).ready(function () {
+            $("#btn").click(function () {
+
+                var c = $("#chem").val();
+                var p = $("#chem").val();
+                var m = $("#chem").val();
+                var total = Number(c) + Number(p) + Number(m);
+                var per = total / 3;
+                var grade = "";
+
+                if (per <= 35) {
+                    grade = "D"
+                }
+                else if (per >= 36 && per <= 50) {
+                    grade = "C";
+                }
+                else if (per >= 51 && per <= 75) {
+                    grade = "B";
+                }
+                else if (per >= 76 && per <= 100) {
+                    grade = "A";
+                }
+                else {
+                    grade = "invalid input"
+                }
+
+
+                var obj = {
+                    "c": c,
+                    "p": p,
+                    "m": m,
+                    "t": total,
+                    "per": per,
+                    "g": grade
+                }
+
+                $("#mydata").html(
+                    "<tr><td>" + c + "</td>" +
+                    "<td>" + p + "</td>" +
+                    "<td>" + m + "</td>" +
+                    "<td>" + total + "</td>" +
+                    "<td>" + per + "</td>" +
+                    "<td>" + grade + "</td></tr>"
+                )
+
+            })
+        })
+
+       
+
+    </script>
+</head>
+
+<body>
+
+    <!-- <div>
+        Marathi : <input type="text" id="txt">
+    </div>
+    <br>
+    <div>
+        English : <input type="text" id="txt1">
+    </div>
+    <br>
+    <div>
+        Science : <input type="text" id="txt2">
+    </div>
+    <br>
+
+    <div>
+        <input type="button" value="submit" id="btn">
+    </div>
+    <hr>
+
+    <h3 id="mydata"></h3>
+    <h3 id="tot"></h3>
+    <h3 id="per"></h3>
+    <h3 id="grd"></h3> -->
+
+
+
+    <!-- task--2 -->
+
+    <div>
+        <label>Chemsitry:</label>
+        <input type="text" id="chem">
+    </div><br>
+    <div>
+        <label>Physics:</label>
+        <input type="text" id="phy">
+    </div><br>
+    <div>
+        <label>Mathamatics:</label>
+        <input type="text" id="math">
+    </div><br>
+    <div>
+        <label>Total:</label>
+        <input type="text" id="total">
+    </div><br>
+
+    <div>
+        <label>percentage:</label>
+        <input type="text" id="per">
+    </div><br>
+    <div>
+        <label>Grade:</label>
+        <input type="text" id="grd">
+    </div><br>
+    <div>
+        <input type="button" value="display" id="btn">
+    </div>
+
+    <table border="2">
+        <thead>
+            <tr>
+                <th>chemistry</th>
+                <th>Physics</th>
+                <th>maths</th>
+                <th>total</th>
+                <th>percentage</th>
+                <th>grade</th>
+            </tr>
+        </thead>
+        <tbody id="mydata"></tbody>
+    </table>
+</body>
+
+</html>

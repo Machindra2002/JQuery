@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>19/10/2022 cookies</title>
+    <script>
+
+        function setcookies(){
+            document.cookie ="username=Machindra";
+            document.cookie ="password=1234";
+            document.cookie = "address = hadapsar pune"
+
+            // document.cookie ="username1=Mayur";
+            // document.cookie ="password1=54321";
+            // document.cookie = "address = hadapsar"
+            alert("saved cookies successfuly");
+
+        }
+
+        function getcookies(){
+            var uname = document.cookie;
+            document.getElementById("msg").innerHTML = "welcome" + uname;
+        }
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+    <input type="button" value="setcookie" onclick="setcookies()">
+
+    <input type="button" value="getcookie" onclick="getcookies()">
+    <h2 id="msg"></h2>
+    
+</body>
+</html>

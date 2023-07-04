@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../Bootstrap Files/js/jquery.min.js"></script>
+    <title>AJAX 12/10/2022</title>
+    <script>
+        // program--1
+        
+        $(document).ready(function(){
+            $("#btn").click(function(){
+
+                $.get("textfile3.txt", function(data){
+                    $("#msg").html(data);
+                })
+
+            })
+        })
+        
+
+        // program-2
+    
+        $(document).ready(function(){
+            $("#btn1").click(function(){
+
+                $.getJSON("textfile3.txt",function(data){
+                    $.each(data,function(i,d){
+                        $("#tbldata").append("<tr><td>" + d.rno + "</td><td>" + d.name + "</td></tr>"); 
+                    })
+                })
+
+            })
+        })
+        
+
+
+        //program--3
+        // $(document).ready(function(){
+        //    getemp();
+        // })
+
+        // function getemp(){
+        //     $.ajax({
+        //         url:"https://jsonplaceholder.typicode.com/todos",
+        //         method : "get",
+        //         contentType : "text/json",
+        //         success : function(resp){
+        //             $.each(resp,function(i,d){
+        //                 $("#tdldata").append("<tr><td>" + d.userId + "</td><td>" + d.id + "</td><td>" + d.title + "</td><td>" + d.completed + "</td></tr>")
+        //             })
+        //         }
+        //     })
+
+        // }
+
+
+    </script>
+</head>
+<body>
+    <!-- program--1 -->
+    <input type="button" value="submit" id="btn">
+    <h3 id="msg"></h3>
+
+
+    <!-- program-2 -->
+    <!-- <input type="button" value="submit" id="btn1">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Roll No</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody id="tbldata"></tbody>
+ -->
+
+        <!-- program--3 -->
+    <!-- <table border="1">
+        <thead>
+            <tr>
+                <th>user id</th>
+                <th>id</th>
+                <th>Title</th>
+                <th>completed</th>
+            </tr>
+        </thead>
+        <tbody id="tdldata"></tbody>
+
+    </table> -->
+</body>
+</html>

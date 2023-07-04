@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cookie task</title>
+    <script>
+
+        var uname = "";
+        var pass = "";
+        function login() {
+            var user_id = document.getElementById("txt1").value;
+            var password = document.getElementById("txt2").value;
+
+            var allcookie = document.cookie;
+            // document.write(allcookie);
+
+            var arrcookie = allcookie.split(";");
+
+            for (var i = 0; i < arrcookie.length; i++) {
+                var name = arrcookie[i].split("=")[0];
+                var value = arrcookie[i].split("=")[1];
+
+                if (value == user_id) {
+                     uname = value;
+                }
+                if (value == password) {
+                     pass = value;
+                }
+            }
+            
+                if (user_id == uname && password == pass) {
+                    alert("value is present");
+                }
+                else if(user_id = "" && password ==""){
+                    alert("please enter value");
+                }
+                else {
+                    alert("value is not present");
+                }
+        }
+
+
+
+    </script>
+</head>
+
+<body>
+
+    Id : <input type="text" id="txt1"><br><br>
+    password : <input type="text" id="txt2"><br>
+
+
+    <br>
+    <input type="button" value="login" onclick="login()"/>
+</body>
+
+</html>

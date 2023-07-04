@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./Bootstrap Files/js/jquery.min.js"></script>
+    <title>10/10/2022</title>
+    <script>
+
+        $(document).ready(function(){
+            $("#btn").click(function(){
+                var a = $("#txt1").val();
+                var b = $("#txt2").val();
+                var c = Number(a) + Number(b);
+                $("#mydata").html("Total=" +c);
+            })
+        })
+
+
+
+
+
+
+
+    </script>
+</head>
+<body>  
+
+    <div>
+        Number1 : <input type="text" id="txt1">
+    </div>
+    <br>
+    <div>
+        Number2 : <input type="text" id="txt2">
+    </div>
+    <div>
+        <input type="button" value="submit" id="btn">
+    </div>
+    <hr>
+    <h3 id="mydata"></h3>
+    
+</body>
+</html>

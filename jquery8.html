@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>api 20/10/2022</title>
+    <script src="../Bootstrap Files/js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            GetEmplyoeeData();
+
+            $("#btn").click(function () {
+                AddEmplyoee();
+            })
+
+            $("#btnupdate").click(function () {
+                Updateemp();
+            })
+
+            $("#btndelete").click(function () {
+                Deleteemp();
+            })
+        });
+
+        // fetch emplyoee
+        function GetEmplyoeeData() {
+            $.ajax({
+                url: 'https://ciitinstitute.com/api/dummyemployees',
+                method: 'get',
+                contentType: "text/json",
+                success: function (resp) {
+                    $("#tbldata").empty();
+                    $.each(resp, function (i, d) {
+                        $("#tbldata").append("<tr><td>" + d.employee_id + "</td>" +
+                            "<td>" + d.employee_name + "</td>" +
+                            "<td>" + d.designation + "</td>" +
+                            "<td>" + d.salary + "</td>" +
+                            "<td>" + d.email_address + "</td>" +
+                            "<td>" + d.mobile_number + "</td>" +
+                            "<td> <input type='button' value='view' onclick='viewemp(" + d.employee_id + ")'/>" + "</td>" +
+                            "</tr>");
+                    })
+                }
+
+            });
+        }
+
+        // add emplyoee function
+        function AddEmplyoee() {
+            var e_name = $("#e_name").val();
+            var des = $("#des").val();
+            var salary = $("#sal").val();
+            var e_address = $("#e_address").val();
+            var Mobile = $("#number").val();
+
+            var obj =
+                { "employee_name": e_name, "designation": des, "salary": salary, "email_address": e_address, "mobile_number": Mobile };
+
+            $.ajax({
+                url: 'https://ciitinstitute.com/api/dummyemployees',
+                method: 'POST',
+                data: JSON.stringify(obj),
+                contentType: "text/json",
+                success: function (add) {
+                    alert('successfully added')
+                    GetEmplyoeeData();
+                    clear();
+                }
+            })
+        }
+
+
+        //view function
+        function viewemp(id) {
+            $.ajax({
+                url: "https://ciitinstitute.com/api/dummyemployees/" + id,          // --/ is madatory to view data
+                method: "get",
+                contentType: "text/json",
+                success: function (v) {
+                    $("#e_id").val(v.employee_id);
+                    $("#e_name").val(v.employee_name);
+                    $("#des").val(v.designation);
+                    $("#sal").val(v.salary);
+                    $("#e_address").val(v.email_address);
+                    $("#number").val(v.mobile_number);
+                },
+            });
+        }
+
+        // update emplyoee function
+        function Updateemp() {
+            var e_id = $("#e_id").val();
+            var e_name = $("#e_name").val();
+            var des = $("#des").val();
+            var salary = $("#sal").val();
+            var e_address = $("#e_address").val();
+            var Mobile = $("#number").val();
+            var obj = {
+                employee_id: e_id,
+                employee_name: e_name,
+                designation: des,
+                salary: salary,
+                email_address: e_address,
+                mobile_number: Mobile
+            };
+            $.ajax({
+                url: 'https://ciitinstitute.com/api/dummyemployees',
+                method: "POST",
+                headers: {
+                    "X-HTTP-Method-Override": "PUT",
+                },
+                data: JSON.stringify(obj),
+                contentType: "text/json",
+                success: function (resp) {
+                    alert(resp);
+                    clear();
+                    GetEmplyoeeData();
+                },
+            });
+        }
+
+        // clear function
+        function clear() {
+            $("#e_id").val("");
+            $("#e_name").val("");
+            $("#des").val("");
+            $("#sal").val("");
+            $("#e_address").val("");
+            $("#number").val("");
+        }
+
+        // Delete function
+        function Deleteemp() {
+            var id = $("#e_id").val();
+            $.ajax({
+                url: "https://ciitinstitute.com/api/deletedummyemployees/" + id,
+                method: "post",
+                headers: {
+                    "X-HTTP-Method-Override": "Delete",
+                },
+                contentType: "text/json",
+                success: function (resp) {
+                    alert(resp);
+                    GetEmplyoeeData();
+                },
+            });
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <table border="2">
+        <thead>
+            <tr>
+                <th>Employee_Id :</th>
+                <th><input type="text" id="e_id"></th>
+            </tr>
+            <tr>
+                <th>Employee_Name :</th>
+                <th><input type="text" id="e_name"></th>
+            </tr>
+            <tr>
+                <th>Designation :</th>
+                <th><input type="text" id="des"></th>
+            </tr>
+            <tr>
+                <th>Salary :</th>
+                <th><input type="text" id="sal"></th>
+            </tr>
+            <tr>
+                <th>email_address :</th>
+                <th><input type="text" id="e_address"></th>
+            </tr>
+            <tr>
+                <th>Mobile_No :</th>
+                <th><input type="text" id="number"></th>
+            </tr>
+
+            <th>
+                <input type="button" value="submit" id="btn">
+                <input type="button" value="update" id="btnupdate">
+                <input type="button" value="delete" id="btndelete">
+            </th>
+
+        </thead>
+    </table>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Employee Id</th>
+                <th>Employee Name</th>
+                <th>designation</th>
+                <th>salary</th>
+                <th>Email Adddress</th>
+                <th>Contact NO</th>
+            </tr>
+        </thead>
+        <tbody id="tbldata">
+
+        </tbody>
+    </table>
+
+
+</body>
+
+</html>

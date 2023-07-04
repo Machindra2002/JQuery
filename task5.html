@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14/10/2022</title>
+    <script>
+
+        //task--1
+        /*
+        function timetask(){
+            var cnt = 0;
+            setInterval(function(){
+                cnt++;
+                if(cnt <= 20){
+                    document.getElementById("msg").innerHTML= "Exam Time Start :"+cnt;
+                }
+                else{
+                    alert ("Exam TimeOut");
+                    window.location.href = "Dashboard.html"
+                }
+            },500)
+
+        }
+        */
+
+        // task--2
+        function StartExam() {
+            var cnt = 0;
+            setInterval(function () {
+                cnt++;
+                if (cnt <= 20) {
+                    document.getElementById("time").innerHTML = "Exam time start" + cnt;
+                }
+                else {
+                    alert("your exam time out");
+                    window.location.href = "Dashboard.html";
+                }
+            }, 1000)
+        }
+
+
+        function endexam() {
+            var que1 = document.getElementsByName("check");
+            if (que1[0].checked) {
+                check = "SSC";
+            }
+            else if (que1[1].checked) {
+                check = "HSC";
+            }
+            else if (que1[2].checked) {
+                check = "BCS";
+            }
+
+            var que2 = document.getElementsByName("chec");
+            if (que2[0].checked) {
+                chec = "JAVA";
+            }
+            else if (que2[1].checked) {
+                chec = "PYHTON";
+            }
+            else if (que2[1].checked) {
+                chec = ".NET";
+            }
+
+            var que3 = document.getElementsByName("che");
+            if (que3[0].checked) {
+                che = "Mumbai";
+            }
+            else if (que3[1].checked) {
+                che = "Gujrat";
+            }
+            else if (que3[2].checked) {
+                che = "Delhi";
+            }
+            document.getElementById("yourans").innerHTML = "1)" + check + "</br>2)" + chec + "</br>3)" + che;
+        }
+
+        function result() {
+            var score = 0;
+            correctsans = "";
+            if (document.getElementById("corr1").checked) {
+                score++;
+            }
+            if (document.getElementById("corr2").checked) {
+                score++;
+            }
+            if (document.getElementById("corr3").checked) {
+                score++;
+            }
+
+            document.getElementById("res").innerHTML = score++;
+            document.getElementById("correctscore").innerHTML = "answersheet:" + correctsans + "1)BCS" + "</br>2)JAVA" + "</br>3)Delhi";
+        }
+
+
+    </script>
+</head>
+
+<body>
+
+    <!-- <input type="button" value="submit" onclick="timetask()">
+    <h3 id="msg"></h3> -->
+
+
+
+    <input type="submit" value="submit" id="btn" onclick="StartExam()">
+    <h3 id="time"></h3>
+
+
+    <div id="question1">
+        <label>1.What is your qualification?</label><br>
+        <input type="radio" name="check" id="s">SSC
+        <input type="radio" name="check" id="h">HSC
+        <input type="radio" name="check" id="corr1">BCS
+    </div>
+    <div id="question2">
+        <label>2.what is your fav language?</label><br>
+        <input type="radio" name="chec" id="corr2">JAVA
+        <input type="radio" name="chec" id="5">PYTHON
+        <input type="radio" name="chec" id="6">.NET
+    </div>
+    <div id="question3">
+        <label>3.Capital of India?</label><br>
+        <input type="radio" name="che" id="7">Mumbai
+        <input type="radio" name="che" id="8">Gujrat
+        <input type="radio" name="che" id="corr3">Delhi
+    </div>
+
+    <input type="submit" value="end exam" onclick="endexam()">
+    <h3 id="yourans"></h3>
+
+    <input type="submit" value="result" onclick="result()">
+    <h3 id="res"></h3>
+    <h3 id="correctscore"></h3>
+
+
+</body>
+
+</html>

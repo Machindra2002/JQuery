@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13/09/2022</title>
+    <script>
+        var dist = [
+            {d_id : 1, d_name : "Pune"},
+            {d_id : 2, d_name : "Solapur"},
+            {d_id : 3, d_name : "Satara"},
+            {d_id : 4, d_name : "Sangali"},
+            {d_id : 5, d_name : "Thane"}
+        ];
+
+        var tal = [
+            {t_id : 1 ,t_name : "shirur", d_id : 1},
+            {t_id : 1 ,t_name : "Haveli", d_id : 1},
+            {t_id : 1 ,t_name : "Purandhar", d_id : 1},
+            {t_id : 1 ,t_name : "Karmala", d_id : 2},
+            {t_id : 1 ,t_name : "karjat", d_id : 2},
+            {t_id : 1 ,t_name : "barsih", d_id : 2},
+            {t_id : 1 ,t_name : "sssss", d_id : 3},
+            {t_id : 1 ,t_name : "ssddff", d_id : 3},
+            {t_id : 1 ,t_name : "llkkjj",d_id : 4},
+            {t_id : 1 ,t_name : "ppooii",d_id : 4},
+            {t_id : 1 ,t_name : "mumbai",d_id : 5},
+            {t_id : 1 ,t_name : "panvel",d_id : 5}
+        ]
+
+
+        function distirct(){
+            var info = "<option selected='disabled'>Select District</option>";
+            for(i=0; i<dist.length; i++){
+                info += "<option value="+ dist[i].d_id + ">"+ dist[i].d_name +"</option>"
+            }
+            document.getElementById("sdist").innerHTML = info;
+        }
+
+        function taluka(){
+            var data = "<option selected='disabled'>Select Taluka</option>"
+            var dist = document.getElementById("sdist").value;
+            for(i=0; i<tal.length; i++){
+                if(dist == tal[i].d_id){
+                    data += "<option value="+ tal[i].t_id + ">"+ tal[i].t_name +"</option>"
+                }
+            }
+            document.getElementById("stal").innerHTML= data;
+        }
+
+
+
+    </script>
+</head>
+<body onload="distirct()">
+    
+    District :
+    <select id="sdist" onchange="taluka()" >
+        <option selected="disabled">District</option>
+    </select>
+
+    Taluka :
+    <select id="stal">
+        <option selected="disabled">Select Taluka</option>
+    </select>
+
+
+
+
+
+</body>
+</html>

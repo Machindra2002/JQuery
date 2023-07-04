@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        
+        function getData(){
+            var uname = localStorage.getItem("username");
+            document.getElementById("msg").innerHTML = "Welcome " +uname;
+        }
+
+    </script>
+</head>
+<body onload="getData()">
+    
+    <!-- <h3> Welcome to settimeout & set time inteval function </h3> -->
+    <!-- <h3> Exam are end </h3> -->
+
+    <h3 id="msg"></h3>
+
+
+    
+</body>
+</html>

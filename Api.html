@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Bootstrap Files/js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            Getemployees();
+
+            $("#btnadd").click(function () {
+                Addemp();
+            })
+        })
+
+        function Addemp() {
+            var n = $("#ename").val();
+            var d = $("#des").val();
+            var s = $("#sal").val();
+            var e = $("#email").val();
+            var m = $("#mobile").val();
+            var obj = { "employee_name": n, "designation": d, "salary": s, "email_address": e, "mobile_number": m };
+            $.ajax({
+                url: 'https://ciitinstitute.com/api/dummyemployees',
+                method: 'post',
+                data: JSON.stringify(obj),
+                contentType: 'application/json',
+                success: function (resp) {
+                    alert(resp);
+                    Getemployees();
+                }
+            })
+        }
+
+
+        function Getemployees() {
+            $.ajax({
+                url: 'https://ciitinstitute.com/api/dummyemployees',
+                method: 'get',
+                contentType: 'application/json',
+                success: function (resp) {
+                    $("#tbldata").empty();
+                    $.each(resp, function (i, d) {
+                        $("#tbldata").append("<tr><td>" + d.employee_id + "</td><td>" + d.employee_name + "</td><td>" + d.designation + "</td><td>" + d.salary + "</td><td>" + d.email_address + "</td><td>" + d.mobile_number + "</td></tr>");
+                    })
+                }
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>Employee Id</th>
+            <th><input type="text" id="eid"></th>
+        </tr>
+        <tr>
+            <th>Employee Name</th>
+            <th><input type="text" id="ename"></th>
+        </tr>
+        <tr>
+            <th>Designation</th>
+            <th><input type="text" id="des"></th>
+        </tr>
+        <tr>
+            <th>Salary</th>
+            <th><input type="text" id="sal"></th>
+        </tr>
+        <tr>
+            <th>Email Address</th>
+            <th><input type="text" id="email"></th>
+        </tr>
+        <tr>
+            <th>Mobile Number</th>
+            <th><input type="text" id="mobile"></th>
+        </tr>
+        <tr>
+
+            <th><input type="button" value="Submit" id="btnadd"></th>
+        </tr>
+    </table>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Employee Id</th>
+                <th>Employee Name</th>
+                <th>Designation</th>
+                <th>Salary</th>
+                <th>Email Address</th>
+                <th>Mobile Number</th>
+
+            </tr>
+        </thead>
+        <tbody id="tbldata"></tbody>
+    </table>
+</body>
+
+</html>

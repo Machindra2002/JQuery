@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task6 18/10/2022</title>
+    <script>
+
+        var arr = [
+            { e_id: 1, e_name: "Ajay", e_des: "HR", e_sal: 30000, e_des_id: 1},
+            { e_id: 2, e_name: "Machindra", e_des: "HR", e_sal: 50000, e_des_id: 1},
+            { e_id: 3, e_name: "Saurabh", e_des: "tester", e_sal: 25000, e_des_id: 3},
+            { e_id: 4, e_name: "Rushikesh", e_des: "Manager", e_sal: 40000, e_des_id: 4},
+            { e_id: 5, e_name: "Kanhaiya", e_des: "tester", e_sal: 30000, e_des_id: 3},
+            { e_id: 6, e_name: "Ranjit", e_des: "developer", e_sal: 50000, e_des_id: 2},
+            { e_id: 7, e_name: "Mandar", e_des: "Manager", e_sal: 35000, e_des_id: 4},
+            { e_id: 8, e_name: "Gaurav", e_des: "developer", e_sal: 22000, e_des_id:2}
+        ];
+        var arr1 = [
+            {e_des:"HR", e_des_id: 1},
+            {e_des:"Manager",e_des_id: 4 },
+            {e_des:"developer",e_des_id: 2 },
+            {e_des:"tester",e_des_id: 3 }
+        ];
+
+        function empdata() {
+            var data = "";
+            for (i = 0; i < arr.length; i++) {
+                data += "<tr><td>" + arr[i].e_id + "</td>" +
+                    "<td>" + arr[i].e_name + "</td>" +
+                    "<td>" + arr[i].e_des + "</td>" +
+                    "<td>" + arr[i].e_sal + "</td></tr>"
+            }
+            document.getElementById("tbldata").innerHTML = data;
+        }
+
+
+        function empinfo(){
+            var data = "<option selected='disabled'>select designation </option>";
+            for(i = 0; i<arr1.length; i++){
+                "<option value="+ arr1[i].e_des_id +">" + arr1[i].e_des + "</option>";
+            }
+            document.getElementById("sel").innerHTML = data;
+        }
+
+        function emp_designation() {
+            // var data = "";
+            var e_select = document.getElementById("sel").value;
+            for(i =0; i<arr.length; i++){
+                if(e_select == arr[i].e_des_id){
+    
+                    data += "<tr><td>" + arr[i].e_id + "</td>" +
+                    "<td>" + arr[i].e_name + "</td>" +
+                    "<td>" + arr1[i].e_des + "</td>" +
+                    "<td>" + arr1[i].e_sal + "</td></tr>"
+                }
+                document.getElementById("tdldata").innerHTML = e_select;
+            }
+
+        }
+
+
+
+
+    </script>
+</head>
+
+<body onload="empdata(),empinfo()">
+
+
+    <table border="2">
+        <thead>
+            <tr>
+                <th>emp_id</th>
+                <th>emp_name</th>
+                <th>emp_designation</th>
+                <th>emp_salary</th>
+            </tr>
+        </thead>
+        <tbody id="tbldata"></tbody>
+    </table>
+
+    <hr>
+    select disignation:
+    <select id="sel" onchange="emp_designation()">
+        <option selected="disabled">select disignation</option>
+    </select>
+
+
+    <!-- select_designation: <select id="sel" onchange="emp_designation()">
+        <option>HR</option>
+        <option>Manager</option>
+        <option>developer</option>
+        <option>tester</option>
+    </select> -->
+    
+
+    <hr>
+    <table border="2">
+        <thead>
+            <tr>
+                <th>emp_id</th>
+                <th>emp_name</th>
+                <th>emp_designation</th>
+                <th>emp_salary</th>
+            </tr>
+        </thead>
+        <tbody id="tdldata"></tbody>
+    </table>
+
+
+
+</body>
+
+</html>
